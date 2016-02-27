@@ -5,11 +5,17 @@ import seaborn; seaborn.set()
 
 # Load the diabetes dataset
 boston = datasets.load_boston()
+# structure of boston: data, feature_names, DESCR and target
+print 'Number of features in the Boston dataset is: ', len(boston['feature_names'])
+print 'Number of samples in the Boston dataset is: ', len(boston['data'])
+### The following line gives the same answer
+### print 'Number of samples in the Boston dataset is: ', len(boston['target'])
 
 # which feature
 i_feature = 0
 # Get the feature name
 feature_name = boston.feature_names[i_feature]
+print 'Feature name is', feature_name
 
 # Use only one feature
 diabetes_X = boston.data[:, np.newaxis, i_feature]

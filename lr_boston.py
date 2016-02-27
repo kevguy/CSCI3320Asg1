@@ -48,6 +48,7 @@ print 'Best fitted model score is: ', best_score
 
 ### Train using the best feature
 # Use only one feature
+###diabetes_X = boston.data[:, np.newaxis, best_idx+3]
 diabetes_X = boston.data[:, np.newaxis, best_idx]
 
 # Split the data into training/testing sets
@@ -73,3 +74,31 @@ sub_square = np.square(sub)
 sub_square_sum = np.sum(sub_square)
 loss = sub_square_sum / len(sub)
 print 'Value of the loss function', loss
+
+print boston_X_test
+
+### draw the scatterplot, with color-coded training and testing points
+train_color = "b"
+test_color = "r"
+import matplotlib.pyplot as plt
+for feature, target in zip(boston_X_test, boston_y_test):
+    plt.scatter( feature, target, color=test_color ) 
+for feature, target in zip(boston_X_train, boston_y_train):
+    plt.scatter( feature, target, color=train_color ) 
+
+### labels for the legend
+plt.scatter(boston_X_test[0], boston_y_test[0], color=test_color, label="test")
+plt.scatter(boston_X_train[0], boston_y_train[0], color=train_color, label="train")
+
+
+
+### draw the regression line, once it's coded
+try:
+    plt.plot( boston_X_test, model.predict(boston_X_test) )
+except NameError:
+    pass
+
+plt.xlabel(best_feature)
+plt.ylabel('Boston House Prices')
+plt.legend()
+plt.show()

@@ -16,6 +16,8 @@ df = pd.read_csv('imports-85.data',
 # Drop every piece of data that contains NaN
 df = df.dropna()
 
+
+### Linear Regression with Multiple Features
 ### Standardize the data
 feature1 = df['engine-size']
 feature2 = df['peak-rpm']
@@ -51,6 +53,17 @@ theta = bracket_inverse.dot(x_transpose)
 theta = theta.dot(Y_Matrix)
 
 ### h(x) = theta_0 + theta_1 * x_1 + theta_2 * x_2
-print 'theta_0', theta[0]
-print 'theta_1', theta[1]
-print 'theta_2', theta[2]
+print 'theta_0: ', theta[0]
+print 'theta_1: ', theta[1]
+print 'theta_2: ', theta[2]
+
+### Multiple Linear Regression with Gradient Descent
+from sklearn import linear_model
+clf = linear_model.SGDRegressor(loss='squared_loss')
+###clf.fit(X_Matrix, np.ravel(Y_scaled))
+clf.fit(data_Matrix, np.ravel(Y_scaled))
+print '\nUsing SGDRegressor()'
+print clf.coef_
+print 'theta_1: ', clf.coef_[0]
+print 'theta_2: ', clf.coef_[1]
+print 'intercept: ', clf.intercept_

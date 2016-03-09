@@ -46,5 +46,5 @@ for y_test, prediction in zip(y_test, pred):
 	count = count + 1
 
 print 'Number of sammples in testing set: ', count
-print 'Number of correct predictions: ', correct
-print 'Number of wrong predictions: ', count - correct
+print 'Number of correct predictions is: ', correct
+print 'Number of wrong predictions is: ', count - correct

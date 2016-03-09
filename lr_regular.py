@@ -16,6 +16,11 @@ xx = np.linspace(0, 26, 100)
 yy = lr_model.predict(xx.reshape(xx.shape[0], 1))
 lr_score = lr_model.score(X_test, y_test)
 plt.plot(xx, yy)
+plt.plot(X_test, y_test)
+plt.title('Linear regression (order 1) result')
+print 'coeff: ', lr_model.coef_
+print 'intercept: ', lr_model.intercept_
+plt.show()
 
 
 # poly = PolynomialFeatures(degree=5)

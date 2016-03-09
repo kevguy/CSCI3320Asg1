@@ -17,7 +17,7 @@ df = pd.read_csv('imports-85.data',
 df = df.dropna()
 
 # Split 80% of data for training set
-split_idx = int((len(df) * 0.7))
+split_idx = int((len(df) * 0.8))
 train = df[:split_idx]
 test = df[split_idx:]
 

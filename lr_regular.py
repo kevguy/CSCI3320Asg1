@@ -39,12 +39,21 @@ yy_poly = pr_model.predict(xx_poly)
 ### score = reg.score(feature_test.reshape(-1, 1), target_test.reshape(-1,1))
 pr_score = pr_model.score(X_test_poly, y_test)
 print 'score: ', pr_score
-plt.plot(xx_poly, yy_poly)
-plt.plot(X_test_poly, y_test)
+plt.plot(xx, yy_poly)
+plt.plot(X_test, y_test)
 plt.title('Linear regression (order 5) result')
 plt.show()
 
-
-# ridge_model = Ridge(alpha=4, normalize=False)
-# ridge_model.fit(X_train_poly, y_train)
-
+### Ridge Regression
+ridge_model = Ridge(alpha=1, normalize=False)
+ridge_model.fit(X_train_poly, y_train)
+yy_ridge = ridge_model.predict(xx_poly)
+ridge_score = ridge_model.score(X_test_poly, y_test)
+print 'Ridge Regression'
+print 'score: ', ridge_score
+print 'coeff: ', ridge_model.coef_
+print 'intercept: ', ridge_model.intercept_
+plt.plot(xx, yy_ridge)
+plt.plot(X_test, y_test)
+plt.title('Ridge regression (order 5) result')
+plt.show()

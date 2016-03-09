@@ -20,6 +20,7 @@ lr_score = lr_model.score(X_test, y_test)
 plt.plot(xx, yy)
 plt.plot(X_test, y_test)
 plt.title('Linear regression (order 1) result')
+print 'Linear Regression'
 print 'coeff: ', lr_model.coef_
 print 'intercept: ', lr_model.intercept_
 plt.show()
@@ -31,7 +32,8 @@ X_train_poly = poly.fit_transform(X_train)
 X_test_poly = poly.transform(X_test)
 pr_model = LinearRegression()
 pr_model.fit(X_train_poly, y_train)
-print 'powers:', poly.powers_
+print '\nLinear Regression order 5'
+### print 'powers:', poly.powers_
 print 'coefficients: ', pr_model.coef_
 print 'intercept: ', pr_model.intercept_
 xx_poly = poly.transform(xx.reshape(xx.shape[0], 1))
@@ -49,7 +51,7 @@ ridge_model = Ridge(alpha=1, normalize=False)
 ridge_model.fit(X_train_poly, y_train)
 yy_ridge = ridge_model.predict(xx_poly)
 ridge_score = ridge_model.score(X_test_poly, y_test)
-print 'Ridge Regression'
+print '\nRidge Regression'
 print 'score: ', ridge_score
 print 'coeff: ', ridge_model.coef_
 print 'intercept: ', ridge_model.intercept_

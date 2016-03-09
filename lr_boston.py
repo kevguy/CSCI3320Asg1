@@ -51,13 +51,19 @@ print 'Best fitted model score is: ', best_score
 ###diabetes_X = boston.data[:, np.newaxis, best_idx+3]
 diabetes_X = boston.data[:, np.newaxis, best_idx]
 
+data_size = len(diabetes_X);
+boundary = (int) (data_size * 0.2)
+
 # Split the data into training/testing sets
-boston_X_train = diabetes_X[:-20]
-boston_X_test = diabetes_X[-20:]
+boston_X_train = diabetes_X[:-boundary]
+boston_X_test = diabetes_X[-boundary:]
+
+print 'length train ', len(boston_X_train);
+print 'length test', len(boston_X_test);
 
 # Split the targets into training/testing sets
-boston_y_train = boston.target[:-20]
-boston_y_test = boston.target[-20:]
+boston_y_train = boston.target[:-boundary]
+boston_y_test = boston.target[-boundary:]
 
 # Create linear regression object
 model = linear_model.LinearRegression()
@@ -75,7 +81,7 @@ sub_square_sum = np.sum(sub_square)
 loss = sub_square_sum / len(sub)
 print 'Value of the loss function', loss
 
-print boston_X_test
+###print boston_X_test
 
 ### draw the scatterplot, with color-coded training and testing points
 train_color = "b"

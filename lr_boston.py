@@ -15,7 +15,7 @@ best_score = -1000
 for i_feature in range(0, len(boston['feature_names'])):
 	# Get the feature name
 	feature_name = boston.feature_names[i_feature]
-	print 'Feature name is', feature_name
+	#print 'Feature name is', feature_name
 
 	# Use only one feature
 	diabetes_X = boston.data[:, np.newaxis, i_feature]
@@ -36,7 +36,7 @@ for i_feature in range(0, len(boston['feature_names'])):
 
 	# Explained variance score: score=1 is perfect prediction
 	model_score = model.score(boston_X_test, boston_y_test)
-	print 'The score is ', model_score, '\n'
+	#print 'The score is ', model_score, '\n'
 
 	if model_score > best_score:
 		best_score = model_score
@@ -52,14 +52,15 @@ print 'Best fitted model score is: ', best_score
 diabetes_X = boston.data[:, np.newaxis, best_idx]
 
 data_size = len(diabetes_X);
-boundary = (int) (data_size * 0.2)
+###boundary = (int) (data_size * 0.2)
+boundary = 20
 
 # Split the data into training/testing sets
 boston_X_train = diabetes_X[:-boundary]
 boston_X_test = diabetes_X[-boundary:]
 
-print 'length train ', len(boston_X_train);
-print 'length test', len(boston_X_test);
+#print 'length train ', len(boston_X_train);
+#print 'length test', len(boston_X_test);
 
 # Split the targets into training/testing sets
 boston_y_train = boston.target[:-boundary]
@@ -79,7 +80,7 @@ sub = pred - boston_y_test
 sub_square = np.square(sub)
 sub_square_sum = np.sum(sub_square)
 loss = sub_square_sum / len(sub)
-print 'Value of the loss function', loss
+print 'Value of the loss function for the best fitted model is: ', loss
 
 ###print boston_X_test
 

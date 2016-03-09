@@ -56,6 +56,7 @@ theta = theta.dot(Y_Matrix)
 print 'theta_0: ', theta[0]
 print 'theta_1: ', theta[1]
 print 'theta_2: ', theta[2]
+print 'Parameter theta calculated by normal equation: ', theta
 
 ### Multiple Linear Regression with Gradient Descent
 from sklearn import linear_model
@@ -67,3 +68,4 @@ print clf.coef_
 print 'theta_1: ', clf.coef_[0]
 print 'theta_2: ', clf.coef_[1]
 print 'intercept: ', clf.intercept_
+print 'Parameter theta calculated by SGD: ', clf.intercept_, ', ', clf.coef_

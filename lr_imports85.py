@@ -53,7 +53,7 @@ except NameError:
     pass
 
 plt.title('Linear regression on clean data')
-plt.xlabel('Engine-size')
+plt.xlabel('Engine size')
 plt.ylabel('Price')
 plt.legend()
 plt.show()
